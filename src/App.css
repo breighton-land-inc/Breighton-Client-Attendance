@@ -5,19 +5,19 @@
   --standard-width: 770px;
 }
 
-/* 1. Global Reset & Layout - Modified for Sticky Footer */
+/* 1. Global Reset & Layout */
 html, body, #root {
   margin: 0;
   padding: 0;
   width: 100%;
-  height: 100%; /* Changed from min-height to height for container scaling */
+  height: 100%; 
 }
 
 .browser-container {
   width: 100%;
   min-height: 100vh;
   display: flex;
-  flex-direction: column; /* Allows footer to be pushed to the bottom */
+  flex-direction: column; 
   align-items: center;
   background-color: var(--bg-color);
   box-sizing: border-box;
@@ -32,7 +32,7 @@ html, body, #root {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 60px 20px 20px; /* Top padding for the form */
+  padding: 60px 20px 20px;
   box-sizing: border-box;
 }
 
@@ -180,23 +180,77 @@ html, body, #root {
   transition: width 0.3s ease;
 }
 
-/* 9. Footer - Fixed to bottom-right of viewport */
+/* 9. Footer */
 .browser-footer {
-  flex-shrink: 0; /* Prevents footer from squishing */
+  flex-shrink: 0;
   width: 100%;
   max-width: var(--standard-width);
   padding: 20px;
   box-sizing: border-box;
   font-size: 12px;
   color: #70757a;
-  text-align: right; /* Aligns trademark to the bottom right */
+  text-align: right; 
 }
 
+/* --- RESPONSIVE BREAKPOINTS --- */
+
+/* TABLET VIEW */
+@media (max-width: 768px) {
+  .viewport-content {
+    padding: 40px 20px 20px;
+    max-width: 95%;
+  }
+  
+  .card-padding {
+    padding: 30px 35px;
+  }
+
+  .form-title {
+    font-size: 28px;
+  }
+}
+
+/* MOBILE VIEW */
 @media (max-width: 480px) {
-  .browser-container { padding: 0; }
-  .viewport-content { padding: 20px 15px; }
-  .card-padding { padding: 25px 20px; }
-  .form-title { font-size: 24px; }
-  .logo-internal { max-width: 280px; }
-  .browser-footer { text-align: center; }
+  .browser-container {
+    padding: 0;
+  }
+
+  .viewport-content {
+    padding: 20px 10px;
+    max-width: 100%;
+  }
+
+  .form-card {
+    border-radius: 0;
+    border-left: none;
+    border-right: none;
+  }
+
+  .card-padding {
+    padding: 25px 20px;
+  }
+
+  .form-title {
+    font-size: 24px;
+  }
+
+  .logo-internal {
+    max-width: 240px;
+  }
+
+  .form-actions {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .submit-btn {
+    width: 100%;
+    padding: 15px;
+  }
+
+  .browser-footer {
+    text-align: center;
+    padding: 15px 10px;
+  }
 }
