@@ -7,12 +7,13 @@ function App() {
     name: '',
     contactNumber: '',
     emailAddress: '',
-    propertySpecialist: '',
+    propertySpecialist: '', // Added field
   });
   const [submitted, setSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [progress, setProgress] = useState(0);
 
+  // Update progress bar based only on required fields
   useEffect(() => {
     const requiredFields = [formData.name, formData.contactNumber, formData.emailAddress];
     const filledFields = requiredFields.filter(field => field.trim() !== '').length;
@@ -28,11 +29,12 @@ function App() {
     e.preventDefault();
     setIsSubmitting(true);
     
+    // Mapping local state to your Google Script's expected column headers
     const payload = {
       clientName: formData.name,
       contactNumber: formData.contactNumber,
       email: formData.emailAddress,
-      propertySpecialist: formData.propertySpecialist,
+      propertySpecialist: formData.propertySpecialist, // Included in payload
     };
 
     try {
@@ -57,21 +59,28 @@ function App() {
     }
   };
 
+  // Function to reset all fields including Property Specialist
+  const handleClear = () => {
+    setFormData({
+      name: '',
+      contactNumber: '',
+      emailAddress: '',
+      propertySpecialist: ''
+    });
+  };
+
   return (
     <div className="browser-container">
-      {/* Progress bar only shows if not submitted */}
       {!submitted && <div className="progress-bar" style={{ width: `${progress}%` }}></div>}
       
       <div className="viewport-content">
         {submitted ? (
-          /* SUCCESS VIEW */
           <div className="form-card success-view">
             <div className="success-icon">✓</div>
             <h1 className="form-title">Success!</h1>
             <p>Your daily log has been submitted successfully.</p>
           </div>
         ) : (
-          /* FORM VIEW */
           <div className="form-card">
             <div className="card-top-accent"></div>
             <div className="card-padding">
@@ -109,7 +118,7 @@ function App() {
                   <button type="submit" className="submit-btn" disabled={isSubmitting}>
                     {isSubmitting ? "Submitting..." : "Submit"}
                   </button>
-                  <span className="clear-link" onClick={() => setFormData({name:'', contactNumber:'', emailAddress:''})}>
+                  <span className="clear-link" onClick={handleClear}>
                     Clear form
                   </span>
                 </div>
@@ -118,8 +127,6 @@ function App() {
           </div>
         )}
       </div>
-      
-      {/* Trademark footer is now outside viewport-content to sit at the absolute bottom */}
       <footer className="browser-footer">© 2026 Breighton Land Inc</footer>
     </div>
   );
