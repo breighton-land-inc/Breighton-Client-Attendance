@@ -6,7 +6,8 @@ function App() {
   const [formData, setFormData] = useState({
     name: '',
     contactNumber: '',
-    emailAddress: ''
+    emailAddress: '',
+    propertySpecialist: '',
   });
   const [submitted, setSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -30,7 +31,8 @@ function App() {
     const payload = {
       clientName: formData.name,
       contactNumber: formData.contactNumber,
-      email: formData.emailAddress 
+      email: formData.emailAddress,
+      propertySpecialist: formData.propertySpecialist,
     };
 
     try {
@@ -96,6 +98,11 @@ function App() {
                 <div className="input-block">
                   <label>Email Address <span className="req">*</span></label>
                   <input type="email" name="emailAddress" placeholder="Enter your email address" value={formData.emailAddress} onChange={handleChange} required />
+                </div>
+
+                <div className="input-block">
+                  <label>Property Specialist (Optional)</label>
+                  <input type="text" name="propertySpecialist" placeholder="If applicable, enter specialist's name" value={formData.propertySpecialist} onChange={handleChange} />
                 </div>
 
                 <div className="form-actions">
