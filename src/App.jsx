@@ -61,13 +61,13 @@ function App() {
 
   // Function to reset all fields including Property Specialist
   const handleClear = () => {
-    setFormData({
-      name: '',
-      contactNumber: '',
-      emailAddress: '',
-      propertySpecialist: ''
-    });
-  };
+  setFormData({
+    name: '',
+    contactNumber: '',
+    emailAddress: '',
+    propertySpecialist: '' // Ensure this is reset too
+  });
+};
 
   return (
     <div className="browser-container">
