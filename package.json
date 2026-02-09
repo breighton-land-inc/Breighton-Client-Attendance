@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "https://VinXy09.github.io/Breighton-Client-Attendance",
+  "homepage": "https://breighton-land-inc.github.io/Breighton-Agent-Attendance",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
