@@ -38,7 +38,7 @@ function App() {
     };
 
     try {
-      await fetch('hhttps://script.google.com/macros/s/AKfycbxdTqyP-BSN2ANLJQdoHsiIxY6Dd582JLqMom0gDrcvxaLzTp3fGZnn6CYDBxivZtYPyg/exec', {
+      await fetch('https://script.google.com/macros/s/AKfycbxdTqyP-BSN2ANLJQdoHsiIxY6Dd582JLqMom0gDrcvxaLzTp3fGZnn6CYDBxivZtYPyg/exec', {
         method: 'POST',
         mode: 'no-cors', 
         headers: {
