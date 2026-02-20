@@ -7,13 +7,12 @@ function App() {
     name: '',
     contactNumber: '',
     emailAddress: '',
-    propertySpecialist: '', // Added field
+    propertySpecialist: '', 
   });
   const [submitted, setSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [progress, setProgress] = useState(0);
 
-  // Update progress bar based only on required fields
   useEffect(() => {
     const requiredFields = [formData.name, formData.contactNumber, formData.emailAddress];
     const filledFields = requiredFields.filter(field => field.trim() !== '').length;
@@ -29,15 +28,15 @@ function App() {
     e.preventDefault();
     setIsSubmitting(true);
     
-    // Mapping local state to your Google Script's expected column headers
     const payload = {
       clientName: formData.name,
       contactNumber: formData.contactNumber,
       email: formData.emailAddress,
-      propertySpecialist: formData.propertySpecialist, // Included in payload
+      propertySpecialist: formData.propertySpecialist,
     };
 
     try {
+      // Ensure this URL is the Web App URL from your NEW Gmail account
       await fetch('https://script.google.com/macros/s/AKfycbxdTqyP-BSN2ANLJQdoHsiIxY6Dd582JLqMom0gDrcvxaLzTp3fGZnn6CYDBxivZtYPyg/exec', {
         method: 'POST',
         mode: 'no-cors', 
@@ -59,15 +58,14 @@ function App() {
     }
   };
 
-  // Function to reset all fields including Property Specialist
   const handleClear = () => {
-  setFormData({
-    name: '',
-    contactNumber: '',
-    emailAddress: '',
-    propertySpecialist: '' // Ensure this is reset too
-  });
-};
+    setFormData({
+      name: '',
+      contactNumber: '',
+      emailAddress: '',
+      propertySpecialist: ''
+    });
+  };
 
   return (
     <div className="browser-container">
@@ -79,6 +77,19 @@ function App() {
             <div className="success-icon">✓</div>
             <h1 className="form-title">Success!</h1>
             <p>Your daily log has been submitted successfully.</p>
+            
+            {/* Added Link to Breighton Website */}
+            <div style={{ marginTop: '25px' }}>
+              <a 
+                href="https://breightonland.com/" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="submit-btn" 
+                style={{ textDecoration: 'none', display: 'inline-block', textAlign: 'center' }}
+              >
+                Visit Our Website
+              </a>
+            </div>
           </div>
         ) : (
           <div className="form-card">
