@@ -210,48 +210,87 @@ html, body, #root {
   }
 }
 
-/* MOBILE VIEW */
-@media (max-width: 480px) {
+/* RESPONSIVE DESIGN - Exact Fit for Any Device */
+@media (max-width: 768px) {
   .browser-container {
-    width: fit-content;
+    width: 100%;
+    min-height: 100vh;
     padding: 0;
+    display: flex;
+    flex-direction: column;
   }
 
   .viewport-content {
-    padding: 20px 50px;
-    max-width: 100%;
+    padding: 10px; /* Reduced to prevent side-scrolling */
+    width: 100%;
+    max-width: 100vw;
+    box-sizing: border-box; /* Ensures padding doesn't add to width */
+    flex: 1;
+    display: flex;
+    align-items: center; /* Centers card vertically on mobile */
   }
 
   .form-card {
-    border-radius: 0;
-    border-left: none;
-    border-right: none;
+    width: 100%;
+    margin: 0 auto;
+    border-radius: 12px; /* Keeping a slight curve looks more professional */
+    border: none;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
   }
 
   .card-padding {
-    padding: 25px 20px;
-  }
-
-  .form-title {
-    font-size: 24px;
+    padding: 20px 15px; /* Tighter padding for small screens */
   }
 
   .logo-internal {
-    max-width: 240px;
+    max-width: 80%; /* Scales logo relative to screen width */
+    height: auto;
+  }
+
+  .form-title {
+    font-size: 1.5rem; /* Scales better than fixed pixels */
+    line-height: 1.2;
+  }
+
+  /* Stack inputs and buttons for better thumb-reach */
+  .input-block input, 
+  .input-block select {
+    font-size: 16px; /* Prevents iOS from auto-zooming on focus */
+    padding: 12px;
   }
 
   .form-actions {
     flex-direction: column;
-    gap: 20px;
+    gap: 15px;
+    align-items: center;
   }
 
   .submit-btn {
     width: 100%;
-    padding: 15px;
+    padding: 16px;
+    font-size: 18px;
+    order: 1; /* Ensures button stays on top of 'Clear' link */
+  }
+
+  .clear-link {
+    order: 2;
+    padding: 10px;
   }
 
   .browser-footer {
-    text-align: center;
+    font-size: 12px;
+    padding: 20px 10px;
+    background: transparent;
+  }
+}
+
+/* Specific fix for very small phones (under 360px) */
+@media (max-width: 360px) {
+  .form-title {
+    font-size: 1.25rem;
+  }
+  
+  .card-padding {
     padding: 15px 10px;
   }
 }
