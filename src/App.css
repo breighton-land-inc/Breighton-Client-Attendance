@@ -213,11 +213,12 @@ html, body, #root {
 /* MOBILE VIEW */
 @media (max-width: 480px) {
   .browser-container {
+    width: fit-content;
     padding: 0;
   }
 
   .viewport-content {
-    padding: 20px 10px;
+    padding: 20px 50px;
     max-width: 100%;
   }
 
